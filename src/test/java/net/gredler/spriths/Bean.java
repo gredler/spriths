@@ -1,5 +1,7 @@
 package net.gredler.spriths;
 
+import java.util.ArrayList;
+
 public class Bean {
 
     private long initTime;
@@ -20,7 +22,10 @@ public class Bean {
 
     public Bean(long initTime) throws InterruptedException {
         this.initTime = initTime;
-        Thread.sleep(initTime);
+        long start = System.currentTimeMillis();
+        while (System.currentTimeMillis() - start < this.initTime) {
+            new ArrayList< Object >();
+        }
     }
 
     public long getInitTime() {
