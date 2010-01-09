@@ -49,6 +49,7 @@ public class ThreadedDefaultListableBeanFactory extends DefaultListableBeanFacto
         super(internalParentBeanFactory);
     }
 
+    @Override
     public void preInstantiateSingletons() throws BeansException {
 
         if (this.logger.isInfoEnabled()) {
@@ -463,6 +464,7 @@ public class ThreadedDefaultListableBeanFactory extends DefaultListableBeanFacto
     // HACK: Get rid of the coarse lock; this is not thread-safe, but should be OK as long as we do a good job of
     // pre-instantiating all singletons in the correct order.
     // Commented code is the original code from the superclass, just to get an idea of what got left out and where.
+    @Override
     public Object getSingleton(String beanName, ObjectFactory singletonFactory) {
         Assert.notNull(beanName, "'beanName' must not be null");
         // synchronized (this.singletonObjects) {

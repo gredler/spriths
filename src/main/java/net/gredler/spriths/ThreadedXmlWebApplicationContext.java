@@ -5,6 +5,7 @@ import org.springframework.web.context.support.XmlWebApplicationContext;
 
 public class ThreadedXmlWebApplicationContext extends XmlWebApplicationContext {
 
+    @Override
     protected DefaultListableBeanFactory createBeanFactory() {
         return new ThreadedDefaultListableBeanFactory(getInternalParentBeanFactory());
     }
