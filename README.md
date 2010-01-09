@@ -34,3 +34,5 @@ The first step runs a test, loading a sample Spring application context in both 
 The test also generates graphs showing the dependencies between the various beans, as well as the state of each bean. White nodes represent beans that are waiting to be initialized but are waiting on their dependent beans to be initialized; yellow nodes represent beans that are waiting to be initialized and which are not blocked by any uninitialized dependencies; green nodes represent beans that are in the middle of being initialized; finally, grey nodes represent beans which have been successfully initialized.
 
 The second step above converts these step-by-step graphs into PNG images, and the third step incorporates these images into an HTML file. This overview file will be available at _./target/graphs/graphs.html_.
+
+**NOTE:** The second step requires that you have [Graphviz](http://www.graphviz.org/) installed.
