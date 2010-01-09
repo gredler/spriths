@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+    <bean id="a" class="net.gredler.spriths.Bean">
+        <constructor-arg value="500" />
+    </bean>
+
+    <bean id="b" class="net.gredler.spriths.Bean" abstract="true">
+        <property name="bean1" ref="a" />
+    </bean>
+
+    <bean id="c" parent="b">
+        <constructor-arg value="100" />
+    </bean>
+
+    <bean id="d" parent="b">
+        <constructor-arg value="100" />
+        <property name="bean2" ref="e" />
+        <property name="bean3" ref="f" />
+        <property name="bean4" ref="g" />
+    </bean>
+
+    <bean id="e" class="net.gredler.spriths.Bean">
+        <constructor-arg value="250" />
+    </bean>
+
+    <bean id="f" class="net.gredler.spriths.Bean">
+        <constructor-arg value="1500" />
+    </bean>
+
+    <bean id="g" class="net.gredler.spriths.Bean2">
+        <constructor-arg value="150" />
+    </bean>
+
+    <tx:annotation-driven />
+
+    <bean id="transactionManager" class="net.gredler.spriths.EmptyTransactionManager" />
+
+</beans>
