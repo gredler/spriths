@@ -30,7 +30,7 @@ Another issue is that `DefaultSingletonBeanRegistry` has a very coarse lock guar
 Step by step
 ------------
 
-The images below illustrate the effects of parallelizing the initialization of eager-init singleton Spring beans, as well as the effects of the `getSingleton(...)` lock. They're screenshots of the thread visualization available in the (very excellent) [YourKit](http://yourkit.com/) profiler. Each row represents a thread; threads named `"spriths-xxx"` are bean initialization threads spawned by Spriths. The green portions of the bars represent time spent by a thread actually running code; red portions indicate that a thread was blocked, waiting for another thread to release a lock somewhere.
+The images below illustrate the effects of parallelizing the initialization of eager-init singleton Spring beans, as well as the effects of the `getSingleton(...)` lock. They're screenshots of the thread visualization available in the (very excellent) [YourKit](http://yourkit.com/) profiler. Each row represents a thread; threads named `spriths-xxx` are bean initialization threads spawned by Spriths. The green portions of the bars represent time spent by a thread actually running code; red portions indicate that a thread was blocked, waiting for another thread to release a lock somewhere.
 
 The first image illustrates the _status quo ante_. This is how Spring currently behaves: a single thread, chugging away at the work.
 
